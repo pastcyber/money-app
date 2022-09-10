@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/dashboard.css" />
+  <script src="https://kit.fontawesome.com/3ce1a2e012.js" crossorigin="anonymous"></script>
+  <title>Money Management</title>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+
+<body>
+  <div class="row_nav">
+    <div class="left_nav">
+      <div class="logo">
+        <img src="images/logo.png"  id="logoImg" alt="">
+      </div>
+    </div>
+    <div class="center_nav">
+      <div class="split1">
+        <h1 style="color:white;margin-left:16px;">Money-Manager</h1>
+      </div>
+      <div class="split2">
+        <div class="box1">
+          <div class="box1_1">
+            <img src="/images/income.png" class="boxImg" alt="profileImage">
+          </div>
+          <div class="box1_2">
+            <h3>  Total Income</h3>
+            <h4>£ <%= totalIncome %></h4>
+          </div>
+        </div>
+        <div class="box2">
+          <div class="box2_1">
+            <img src="/images/expense.png" class="boxImg" alt="profileImage">
+          </div>
+          <div class="box2_2">
+            <h3> Total Expenses</h3>
+            <h4>£ <%= totalExpense %></h4>
+          </div>
+        </div>
+        <div class="box3">
+          <div class="box3_1">
+            <img src="/images/savings.png" class="boxImg" alt="profileImage">
+          </div>
+          <div class="box3_2">
+            <h3> Total Savings</h3>
+            <h4>£ <%= savings %></h4>
+          </div>
+        </div>
+        <div class="box4">
+          <div class="box4_1">
+            <img src="/images/profile_demo.png" class="boxImg" alt="profileImage">
+          </div>
+          <div class="box4_2">
+            <h4><%= user.name %></h4>
+            <h5><%=user.email%></h5>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+  <div class="row1">
+    <div class="left">
+      
+      <nav id="nav-menu">
+        <ul class="nav-menu-items">
+           
+           
+            <div class="nav-section">
+                <li class="nav-text " onclick="aclick('c1')">
+                    <a href="dashboard" id="c1"><i class="fas fa-home nav-icon"></i>Dashboard</a>
+                </li>
+                <li class="nav-text " onclick="aclick('c2')">
+                    <a href="addIncome" id="c2"><i class="fas fa-coins nav-icon"></i>Add Income</a>
+                </li>
+              
+                <li class="nav-text " onclick="aclick('c3')">
+                    <a href="addExpense" id="c3"><i class="fas fa-utensils nav-icon"></i>Add Expense</a>
+                </li>
+            </div>
+            <hr>
+            <div class="nav-section2">
+                <li class="nav-text">
+                  <a href="/users/logout"><img src="images/logout.png" class="logoutImg " alt=""> Log-Out</a>
+                </li>
+                
+            </div>
+        </ul>
+    </nav>
+</div>
+
+
+    <div class="center">
+      <div class="center_1">
+        <div class="center__1">
+          <h2>Income</h2>
+          <% if (! incomeEmpty) { %>
+            <h3 class="pie"    >Please add <br> Income  to  visualize Pie Chart</h3>
+          <% }
+          else
+          { %>
+            <div id="piechart"></div>
+          <% }
+          %>
+          </div>
+        <div class="center__2">
+          <h2>Expense</h2>
+          <% if (! expenseEmpty) { %>
+            <h3 class="pie"    >Please add  <br> Expenses to visualize Pie Chart</h3>
+          <% }
+          else
+          { %>
+            <div id="piechart2"></div>
+          <% }
+          %>
+          
+            
+
+          </div>
+        
+          
+          
+      </div>
+      <div class="center_2">
+       
+          
+        <h2>Expenses</h2>
+          <table id="expense">
+            <thead>
+            <tr>
+              <th style="border-radius:20px 0px 0px 0px ;">Type</th>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>Description</th>
+              
+              <th>Edit</th>
+              <th style="border-radius:0px 20px 0px 0px ;">Delete</th>
+            </tr>
+          </thead>
+          <tbody> 
+            <% Expense.forEach(function (Expense) { %>
+            <tr>
+              <td><%= Expense.typeOfExpense %> </td>
+              <td><%= moment(Expense.date).format('DD, MMMM, YYYY')%></td>
+              <td>£ <%= Expense.number %></td>
+              <td class="details"><%= Expense.description %></td>
+              
+              <td class="edit"><form action="/index/edit-expense/<%= Expense._id %>" method="GET"><input type="submit" value="Edit"></form></td>
+              <td class="delete"><form action="/index/delete/<%= Expense._id %>" method="POST"><input type="submit" value="Delete">  </form></td>
+            </tr>
+            <% }) %>
+            
+            
+          </tbody>
+          </table>
+          
+
+        </div>
+        <div class="center_2">
+       
+          
+      <h2>Income</h2>
+          <table id="expense">
+            <thead>
+            <tr>
+              <th style="border-radius:20px 0px 0px 0px ;">Type</th>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>Description</th>
+             
+              <th>Edit</th>
+              <th style="border-radius:0px 20px 0px 0px ;">Delete</th>
+            </tr>
+          </thead>
+          <tbody> 
+            <% Income.forEach(function (Income) { %>
+            <tr>
+              <td><%= Income.typeOfIncome %> </td>
+              <td><%= moment(Income.date).format('DD, MMMM, YYYY')%></td>
+              <td>£ <%= Income.number %></td>
+              <td class="details"><%= Income.description %></td>
+              
+              <td class="edit"><form action="/index/edit-income/<%= Income._id %>" method="GET"><input type="submit" value="Edit"></form></td>
+              <td class="delete"><form action="/index/deleteIncome/<%= Income._id %>" method="POST"><input type="submit" value="Delete">  </form></td>
+            </tr>
+            <% }) %>
+            
+            
+          </tbody>
+          </table>
+          
+
+        </div>
+     
+
+    </div>
+    <div class="right">
+      <h1 style="margin: 10px 0px;">Profile</h1>
+      <div class="profile-pic-div">
+        <img src="images/profile_demo.jpg" id="photo">
+        <input type="file" id="file">
+        <label for="file" id="uploadBtn">Edit Photo</label>
+      </div>
+      <div class="profile-data">
+        <h3><%= user.name %></h3>
+        <h4>Email: <span class="email-in-profile-data"> <%=user.email%></span></h4>
+      </div>
+    </div>
+</body>
+
+<script>
+
+  const imgDiv = document.querySelector('.profile-pic-div');
+  const img = document.querySelector('#photo');
+  const file = document.querySelector('#file');
+  const uploadBtn = document.querySelector('#uploadBtn');
+
+  //if user hover on img div 
+
+  imgDiv.addEventListener('mouseenter', function () {
+    uploadBtn.style.display = "block";
+  });
+
+  //if we hover out from img div
+
+  imgDiv.addEventListener('mouseleave', function () {
+    uploadBtn.style.display = "none";
+  });
+
+
+
+  //when we choose a foto to upload
+
+  file.addEventListener('change', function () {
+    //this refers to file
+    const choosedFile = this.files[0];
+
+    if (choosedFile) {
+
+      const reader = new FileReader();
+
+      reader.addEventListener('load', function () {
+        img.setAttribute('src', reader.result);
+      });
+
+      reader.readAsDataURL(choosedFile);
+
+
+    }
+  });
+
+  function aclick(data){
+    var anchor=document.getElementById(data).click();
+  }
+</script>
+<script type="text/javascript">
+  // Load google charts
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+  
+  // Draw the chart and set the chart values
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+    ['Task', 'Hours per Day'],
+    ['Job Salary', <%= incomeDetails.salary %>],
+    ['Business',  <%= incomeDetails.business %>],
+    ['Trading ',  <%= incomeDetails.trading %>],
+    ['Rental',  <%= incomeDetails.rental %>],
+    ['others',  <%= incomeDetails.otherSalary %>]
+  ]);
+  
+    // Optional; add a title and set the width and height of the chart
+    var options = { is3D: true,'width':500, 'height':250, chartArea:{left:20,top:10,width:'80%',height:'80%'}};
+  
+    // Display the chart inside the <div> element with id="piechart"
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    chart.draw(data, options);
+  }
+  </script>
+<script type="text/javascript">
+  // Load google charts
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+  
+  // Draw the chart and set the chart values
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+    ['Task', 'Hours per Day'],
+    ['Grocery', <%= expenseDetails.grocery %>],
+    ['Rent', <%= expenseDetails.rent %>],
+    ['Clothing', <%= expenseDetails.clothing %>],
+    ['Junk Food', <%= expenseDetails.junkFood %>],
+    ['others', <%= expenseDetails.others %>]
+  ]);
+  
+    // Optional; add a title and set the width and height of the chart
+    var options = { is3D: true,'width':500, 'height':250, chartArea:{left:20,top:10,width:'80%',height:'80%'}};
+  
+    // Display the chart inside the <div> element with id="piechart"
+    var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+    chart.draw(data, options);
+  }
+  </script>
+
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+ <script>
+  $("#profileImage").click(function(e) {
+    $("#imageUpload").click();
+});
+
+function fasterPreview( uploader ) {
+    if ( uploader.files && uploader.files[0] ){
+          $('#profileImage').attr('src', 
+             window.URL.createObjectURL(uploader.files[0]) );
+    }
+} 
+ $("#imageUpload").change(function(){
+    fasterPreview( this );
+}); 
+ </script> -->
+
+</html>

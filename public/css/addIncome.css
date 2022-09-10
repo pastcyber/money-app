@@ -1,0 +1,351 @@
+/* UTILITIES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+   }
+   body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #5507E0;
+    background-size: 100%;
+   }
+   a {
+    text-decoration: none;
+   }
+   li {
+    list-style: none;
+   }
+   /* NAVBAR STYLING STARTS */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px;
+    background-color: teal;
+    color: #fff;
+   }
+   .nav-links a {
+    color: #fff;
+   }
+   /* LOGO */
+   .logo {
+    font-size: 32px;
+   }
+   /* NAVBAR MENU */
+   .menu {
+    display: flex;
+    gap: 1em;
+    font-size: 18px;
+   }
+   .menu li:hover {
+    background-color: #4c9e9e;
+    border-radius: 5px;
+    transition: 0.3s ease;
+   }
+   .menu li {
+    padding: 5px 14px;
+   }
+   /* DROPDOWN MENU */
+   .services {
+    position: relative; 
+   }
+   .dropdown {
+    background-color: rgb(1, 139, 139);
+    padding: 1em 0;
+    position: absolute; /*WITH RESPECT TO PARENT*/
+    display: none;
+    border-radius: 8px;
+    top: 35px;
+   }
+   .dropdown li + li {
+    margin-top: 10px;
+   }
+   .dropdown li {
+    padding: 0.5em 1em;
+    width: 8em;
+    text-align: center;
+   }
+   .dropdown li:hover {
+    background-color: #4c9e9e;
+   }
+   .services:hover .dropdown {
+    display: block;
+   }
+   *RESPONSIVE NAVBAR MENU STARTS*/
+/* CHECKBOX HACK */
+input[type=checkbox]{
+ display: none;
+} 
+/*HAMBURGER MENU*/
+.hamburger {
+ display: none;
+ font-size: 24px;
+ user-select: none;
+}
+/* APPLYING MEDIA QUERIES */
+@media (max-width: 768px) {
+.menu { 
+ display:none;
+ position: absolute;
+ background-color:teal;
+ right: 0;
+ left: 0;
+ text-align: center;
+ padding: 16px 0;
+}
+.menu li:hover {
+ display: inline-block;
+ background-color:#4c9e9e;
+ transition: 0.3s ease;
+}
+.menu li + li {
+ margin-top: 12px;
+}
+input[type=checkbox]:checked ~ .menu{
+ display: block;
+}
+.hamburger {
+ display: block;
+}
+.dropdown {
+ left: 50%;
+ top: 30px;
+ transform: translateX(35%);
+}
+.dropdown li:hover {
+ background-color: #4c9e9e;
+}
+}
+.row1{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+   
+}
+.left{
+    width: 20%;
+    margin-top: 20px;
+    margin-left: 20px;
+    height: 46vh;
+    text-align: center;
+   border-radius: 20px;
+   box-shadow: 0px 0px 30px #ffa1a1;
+    background: white;
+    
+}
+.right{
+    width: 20%;
+  margin-top: 20px;
+  margin-right: 20px;
+  height: 10%;
+  text-align: center;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 30px #ffa1a1;
+ 
+
+}
+.center{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+   margin: 20px 30px;
+   border-radius: 20px;
+   border: none;
+   background: white;
+   color: black;
+   box-shadow: 0px 0px 30px #ffa1a1;
+
+}
+.center_1{
+ 
+    
+    width: 100%;
+    
+    display: flex;
+    
+    flex-direction: column;
+   
+    align-items: center;
+}
+
+
+
+
+.center h2 ,.center13 h2{
+text-align: center;
+}
+
+.center_1 h1{
+    margin: 20px 0px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+table {
+    border-collapse: separate;
+    border-spacing: 40px 0;
+  }
+  
+  td {
+    padding: 10px 0;
+  }
+  #submitbtn{
+    margin-top: 2rem;
+    padding: 0.4rem;
+    width: 50%;
+    background: linear-gradient(to left, #4776E6, #8e54e9);
+    cursor: pointer;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 300;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    
+  }
+  #submitbtn:hover{
+    letter-spacing: 0.5px;
+    background: linear-gradient(to right, #4776E6, #8e54e9);
+   
+  }
+input{
+    outline: none;
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid gray;
+
+    
+}
+
+
+#optionExpense{
+  
+    width: 248px;
+    height: 30px;
+    font-size: 17px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    border-radius: 2px;
+    transition: .3s ;
+    text-align: center;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid gray;
+}
+#date{
+    text-align: center;
+}
+textarea{
+    border: none;
+    background:#b4dddd;
+    outline: none;
+    border-radius: 5px;
+}
+#reciept{
+    display: none;
+}
+#fileUploadImage{
+    max-width: 50px;
+    max-height: 50px;
+    cursor: pointer;
+   
+
+}
+
+/* Css for left nav0 */
+
+
+
+hr{
+    background-color: #464646;
+    height: 1px;
+    border: none;
+}
+
+.menu-bars{
+    margin-left: 2rem;
+    font-size: 1.5rem;
+    color: #fff;
+}
+#nav-menu{
+    background-color: #ffffff;
+    border-radius: 20px;
+    
+    display: flex;
+    justify-content: center;
+   
+    transition: 850ms;
+}
+#nav-menu.active{
+    left: 0;
+    transition: 350ms;
+}
+a{
+    display: flex;
+    justify-content: start;
+    list-style: none;
+    height: 45px;
+    padding: 7px;
+}
+.nav-text a{
+    text-decoration: none;
+    color: #000000;
+    font-size: 1.2rem;
+    margin-left: 1rem;
+    align-items: center;
+}
+.nav-text:hover{
+    background-color: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+.nav-menu-items{
+    width: 100%;
+}
+.nav-icon{
+    padding-right: 1rem;
+    color: #7e0d0d;
+}
+
+
+
+
+.fa-bars{
+    color: #fff;
+}
+.nav-section{
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.nav-section2{
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.logoutImg{
+    max-width: 30px;
+    max-height: 30px;
+    margin-right: 10px;
+   
+}
+.boxImg{
+    max-width: 50px;
+    max-height: 50px;
+}
+.box4_2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0px 20px;
+}
+.box4{
+    width: 25%;
+    border-radius: 10px;
+    height: 50px;
+ 
+    display: flex;
+    flex-direction: row;
+}

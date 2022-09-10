@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/addExpense.css" />
+  <script src="https://kit.fontawesome.com/3ce1a2e012.js" crossorigin="anonymous"></script>
+
+  <title>Money Management</title>
+</head>
+
+<body>
+  
+  <div class="row1">
+    <div class="left">
+      <nav id="nav-menu">
+        <ul class="nav-menu-items">
+           
+
+            <div class="nav-section">
+                <li class="nav-text " onclick="aclick('c1')">
+                    <a href="../dashboard" id="c1"><i class="fas fa-home nav-icon"></i>Dashboard</a>
+                </li>
+                <li class="nav-text " onclick="aclick('c2')">
+                    <a href="../addIncome" id="c2"><i class="fas fa-coins nav-icon"></i>Add Income</a>
+                </li>
+                <li class="nav-text " onclick="aclick('c3')">
+                    <a href="../addExpense" id="c3"><i class="fas fa-utensils nav-icon"></i>Add Expense</a>
+                </li>
+            </div>
+            <hr>
+            <div class="nav-section2">
+                <li class="nav-text">
+                  <a href="/users/logout"><img src="/images/logout.png" class="logoutImg " alt=""> Log-Out</a>
+                </li>
+                
+            </div>
+        </ul>
+    </nav>
+    </div>
+    <div class="center">
+      <div class="center_1">
+       
+          <h1>Add Your Expenses</h1>
+          <form action="/index/addExpense" method="post">
+            <table>
+              <tr>
+                <td>Type of Expense :</td>
+                <td> <select name="typeOfExpense"  id="optionExpense"  required>
+                  <option value="rent">Rent</option>
+                  <option value="grocery">Grocery</option>
+                  <option value="clothing">Clothing </option>
+                  <option value="junk">Junk Food</option>
+                  <option value="others">others</option>
+                </select></td>
+               
+              </tr>
+              <tr>
+                <td>Date of Expense :</td>
+                <td> <input type="date" name="date" id="" required></td>
+              </tr>
+              <tr>
+                <td>Expenditure Amount :</td>
+                <td> <input type="number" name="number" id="" required></td>
+              </tr>
+              <tr>
+                <td>Description of Expense :</td>
+                <td> <textarea name="description" id="" cols="50"  placeholder="Enter decription of Expenditure (optional)" rows="10"></textarea><td>
+              </tr>
+              <!-- <tr>
+                <td>Reciept Document :</td>
+               <td><input type="file" name="reciept" id="reciept"><div class="upload"><img src="/images/up.png" id="fileUploadImage" alt=""></div></td>
+              </tr> -->
+              <tr>
+                
+               <td colspan="2" style="text-align: center;"><input type="submit" value="Add my Expense"  id="submitbtn"></td>
+              </tr>
+            </table>
+            
+           
+          </form>
+
+        
+
+      </div>
+     
+
+    </div>
+    <div class="right">
+      <div class="box4">
+        <div class="box4_1">
+          <img src="/images/profile_demo.png" class="boxImg" alt="profileImage">
+        </div>
+        <div class="box4_2">
+          <h4><%= name %></h4>
+          <h5><%= email %></h5>
+        </div>
+
+    </div>
+  </div>
+  <script>
+  //   var uploadFile= document.getElementById('fileUploadImage');
+  //   uploadFile.onclick= function(){
+  //     var file=document.getElementById('reciept').click();
+  //   }
+  //   function aclick(data){
+  //   var anchor=document.getElementById(data).click();
+  // }
+  </script>
+</body>
+
+</html>

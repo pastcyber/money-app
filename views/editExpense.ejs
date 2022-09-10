@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/addExpense.css" />
+  <script src="https://kit.fontawesome.com/3ce1a2e012.js" crossorigin="anonymous"></script>
+
+  <title>Money Management</title>
+</head>
+
+<body>
+  
+  <div class="row1">
+    <div class="left">
+      <nav id="nav-menu">
+        <ul class="nav-menu-items">
+           
+
+            <div class="nav-section">
+                <li class="nav-text " onclick="aclick('c1')">
+                    <a href="../dashboard" id="c1"><i class="fas fa-home nav-icon"></i>Dashboard</a>
+                </li>
+                <li class="nav-text " onclick="aclick('c2')">
+                    <a href="../addIncome" id="c2"><i class="fas fa-coins nav-icon"></i>Add Income</a>
+                </li>
+                <li class="nav-text " onclick="aclick('c3')">
+                    <a href="../addExpense" id="c3"><i class="fas fa-utensils nav-icon"></i>Add Expense</a>
+                </li>
+            </div>
+            <hr>
+            <div class="nav-section2">
+                <li class="nav-text">
+                  <a href="/users/logout"><img src="/images/logout.png" class="logoutImg " alt=""> Log-Out</a>
+                </li>
+                
+            </div>
+        </ul>
+    </nav>
+    </div>
+    <div class="center">
+      <div class="center_1">
+       
+          <h1>Edit Your Expenses</h1>
+          <form action="/index/edit-expense/<%= expenseDetail._id %>" method="post">
+            <table>
+              <tr>
+                <td>Type of Expense :</td>
+                <td> <select name="typeOfExpense"  id="optionExpense" selected="grocery"  required>
+                  <option <% if(expenseDetail.typeOfExpense=='rent'){%> selected="selected"
+                    <%} %> value="rent">Rent</option>
+                  <option <% if(expenseDetail.typeOfExpense=='grocery'){%> selected="selected"
+                    <%} %> value="grocery">Grocery</option>
+                  <option <% if(expenseDetail.typeOfExpense=='clothing'){%> selected="selected"
+                    <%} %> value="clothing">Clothing </option>
+                  <option <% if(expenseDetail.typeOfExpense=='junk'){%> selected="selected"
+                    <%} %> value="junk">Junk Food</option>
+                  <option <% if(expenseDetail.typeOfExpense=='others'){%> selected="selected"
+                    <%} %> value="others">others</option>
+                </select></td>
+               
+              </tr>
+              <tr>
+              
+                <td>Date of Expense :</td>
+                <td> <input type="date" name="date" value ="<%= date %>" id="" required></td>
+              </tr>
+              <tr>
+                <td>Expenditure Amount :</td>
+                <td> <input type="number" value="<%= expenseDetail.number %>" name="number" id="" required></td>
+              </tr>
+              <tr>
+                <td>Description of Expense :</td>
+                <td> <textarea name="description" id="" cols="50"  placeholder="Enter decription of Expenditure (optional)" rows="10"><%= expenseDetail.description %></textarea><td>
+              </tr>
+              <!-- <tr>
+                <td>Reciept Document :</td>
+               <td><input type="file" name="reciept" id="reciept"><div class="upload"><img src="/images/up.png" id="fileUploadImage" alt=""></div></td>
+              </tr> -->
+              <tr>
+                
+               <td colspan="2" style="text-align: center;"><input type="submit" value="Edit my Expense"  id="submitbtn"></td>
+              </tr>
+            </table>
+            
+           
+          </form>
+
+        
+
+      </div>
+     
+
+    </div>
+    <div class="right">
+      <div class="box4">
+        <div class="box4_1">
+          <img src="/images/profile_demo.png" class="boxImg" alt="profileImage">
+        </div>
+        <div class="box4_2">
+          <h4>Harkirat Singh</h4>
+          <h5>harkirat@gmail.com</h5>
+        </div>
+
+    </div>
+  </div>
+  <script>
+  //   var uploadFile= document.getElementById('fileUploadImage');
+  //   uploadFile.onclick= function(){
+  //     var file=document.getElementById('reciept').click();
+  //   }
+  //   function aclick(data){
+  //   var anchor=document.getElementById(data).click();
+  // }
+  </script>
+</body>
+
+</html>

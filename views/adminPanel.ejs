@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/adminPanel.css" />
+  <script src="https://kit.fontawesome.com/3ce1a2e012.js" crossorigin="anonymous"></script>
+  <title>Money Management</title>
+
+</head>
+
+<body>
+  <div class="row_nav">
+    <div class="left_nav">
+      <div class="logo">
+        <img src="/images/logo.png"  id="logoImg" alt="">
+      </div>
+    </div>
+    <div class="center_nav">
+      <div class="split1">
+        <h1 style="color:white;margin-left:16px;">Money-Manager</h1><br><br>
+        <h2 style="color:white;margin-left:16px;">Welcome Administrator!</h2>
+      </div>
+      <div class="split2">
+       
+        <div class="box1">
+            <div class="box1_1">
+              <img src="/images/income.png" class="boxImg" alt="profileImage">
+            </div>
+            <div class="box1_2">
+              <h3>  Total Users</h3>
+              <h4><%= userCount %></h4>
+            </div>
+          </div>
+        <div class="box4">
+          <div class="box4_1">
+            <img src="/images/profile_demo.png" class="boxImg" alt="profileImage">
+          </div>
+          <div class="box4_2">
+            <h4><%= name %></h4>
+            <h5><%= email %></h5>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+  <div class="row1">
+    <div class="left">
+      
+      <nav id="nav-menu">
+        <ul class="nav-menu-items">
+           
+           
+            <div class="nav-section">
+               
+           
+            <div class="nav-section2">
+                <li class="nav-text">
+                  <a href="/users/logout"><img src="/images/logout.png" class="logoutImg " alt=""> Log-Out</a>
+                </li>
+                
+            </div>
+        </ul>
+    </nav>
+</div>
+
+
+    <div class="center">
+      
+      <div class="center_2">
+       
+          
+        <h2>User Details</h2>
+          <table id="expense" style="text-align: center;">
+            <thead >
+            <tr>
+              <th style="border-radius:20px 0px 0px 0px ;">Name</th>
+              <th>Email</th>
+              <th>Date of Register</th>
+           
+             
+             
+              <th style="border-radius:0px 20px 0px 0px ;">Delete</th>
+            </tr>
+          </thead>
+          <tbody> 
+            <% user.forEach(function (user) { %>
+                <tr>
+                  <td><%= user.name %> </td>
+                  <td><%= user.email%></td>
+                  <td> <%= moment(user.date).format('DD, MMMM, YYYY') %></td>
+                  
+                 
+                  <td class="delete"><form action="/index/deleteUser/<%= user._id %>" method="POST"><input type="submit" value="Delete">  </form></td>
+                </tr>
+                <% }) %>
+            
+            
+          </tbody>
+          </table>
+          
+
+        </div>
+        
+
+    </div>
+    <div class="right">
+      <h1 style="margin: 10px 0px;">Admin</h1>
+      <div class="profile-pic-div">
+        <img src="/images/profile_demo.jpg" id="photo">
+        <input type="file" id="file">
+        <label for="file" id="uploadBtn">Edit Photo</label>
+      </div>
+      <div class="profile-data">
+  
+      </div>
+    </div>
+</body>
+
+
+
+</html>
