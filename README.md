@@ -20,3 +20,5 @@ npm start
 ```
 
 
+## Click here for testing live deployed application on Heroku
+https://fast-bastion-06255.herokuapp.com/
